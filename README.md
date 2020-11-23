@@ -30,6 +30,7 @@ https://docs.godotengine.org/en/stable/development/compiling/compiling_for_windo
 ## Instructions
 
 * 1 - When You install like any plugin, and enable it (image below) it will take a little longer because it will install the necessary files at the godot data folder.
+
 ![test](https://i.imgur.com/kY2hap3.png)
 
 * 2 - These new generated files Can be accessed via: 
@@ -63,6 +64,7 @@ Now just modify your classes (step 2 - for accesing them) and click COMPILE SOUR
 ### Credits
 
 A huge thanks to this guy: ->
+
 ![](https://i.imgur.com/DCEHh03.png)
 
 Without him this project wouldn't be possible he helped with SCons file for building, also a lot of help with my errors during development
