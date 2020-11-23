@@ -1,0 +1,305 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/native_integration/NativeMainWindow.gd" type="Script" id=1]
+[ext_resource path="res://addons/native_integration/icons/question.svg" type="Texture" id=2]
+[ext_resource path="res://addons/native_integration/icons/thumbs-up.svg" type="Texture" id=3]
+[ext_resource path="res://addons/native_integration/icons/error.svg" type="Texture" id=4]
+[ext_resource path="res://addons/native_integration/CreateClassDialog.gd" type="Script" id=5]
+
+[node name="NativeMain" type="Control"]
+use_parent_material = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+icons = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+np_le_proj = NodePath("Dialog/vbc/p/vbcc/gc/hbc/le_project")
+np_bt_createproj = NodePath("Dialog/vbc/p/vbcc/gc/hbc/bt_createproj")
+np_bt_genbin = NodePath("Dialog/vbc/p/vbcc/bt_genbind")
+np_bt_compile = NodePath("Dialog/vbc/p/vbcc/bt_compile")
+np_ob_platform = NodePath("Dialog/vbc/p/vbcc/gc2/ob_platform")
+np_ob_target = NodePath("Dialog/vbc/p/vbcc/gc2/ob_target")
+np_sb_proc = NodePath("Dialog/vbc/p/vbcc/gc2/sb_proc")
+np_bt_createclass = NodePath("Dialog/vbc/p/vbcc/bt_create_class")
+
+[node name="Dialog" type="ConfirmationDialog" parent="."]
+visible = true
+use_parent_material = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -325.0
+margin_top = -271.0
+margin_right = 325.0
+margin_bottom = 271.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = "Native Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbc" type="VBoxContainer" parent="Dialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+custom_constants/separation = 18
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rtl" type="RichTextLabel" parent="Dialog/vbc"]
+margin_right = 634.0
+margin_bottom = 30.0
+custom_colors/default_color = Color( 0.556863, 0.556863, 0.556863, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]In order to compile stuff,
+ make sure you have[url=https://docs.godotengine.org/en/stable/development/compiling/index.html] these installed on your machine[/url]"
+text = "In order to compile stuff,
+ make sure you have these installed on your machine"
+fit_content_height = true
+
+[node name="p" type="Panel" parent="Dialog/vbc"]
+margin_top = 48.0
+margin_right = 634.0
+margin_bottom = 498.0
+size_flags_vertical = 3
+
+[node name="vbcc" type="VBoxContainer" parent="Dialog/vbc/p"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.1225
+margin_top = 4.0
+margin_right = -10.8776
+margin_bottom = -4.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gc" type="GridContainer" parent="Dialog/vbc/p/vbcc"]
+margin_right = 610.0
+margin_bottom = 24.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb_pname" type="Label" parent="Dialog/vbc/p/vbcc/gc"]
+margin_top = 5.0
+margin_right = 303.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Project Name"
+
+[node name="hbc" type="HBoxContainer" parent="Dialog/vbc/p/vbcc/gc"]
+margin_left = 307.0
+margin_right = 610.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="le_project" type="LineEdit" parent="Dialog/vbc/p/vbcc/gc/hbc"]
+margin_right = 247.0
+margin_bottom = 24.0
+hint_tooltip = "Mus be a UNIQUE NAME for each project, since the compile stuff is installed globally a name must be used to identify only \"local\" scripts."
+size_flags_horizontal = 3
+text = "my_project"
+virtual_keyboard_enabled = false
+
+[node name="bt_createproj" type="Button" parent="Dialog/vbc/p/vbcc/gc/hbc"]
+margin_left = 251.0
+margin_right = 303.0
+margin_bottom = 24.0
+text = "create"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hs" type="HSeparator" parent="Dialog/vbc/p/vbcc"]
+margin_top = 34.0
+margin_right = 610.0
+margin_bottom = 38.0
+
+[node name="bt_genbind" type="Button" parent="Dialog/vbc/p/vbcc"]
+margin_top = 48.0
+margin_right = 610.0
+margin_bottom = 68.0
+disabled = true
+text = "Generate Bindings"
+icon = ExtResource( 2 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bt_compile" type="Button" parent="Dialog/vbc/p/vbcc"]
+margin_top = 78.0
+margin_right = 610.0
+margin_bottom = 98.0
+disabled = true
+text = "Compile Sources"
+icon = ExtResource( 2 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gc2" type="GridContainer" parent="Dialog/vbc/p/vbcc"]
+margin_top = 108.0
+margin_right = 610.0
+margin_bottom = 180.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb_platform" type="Label" parent="Dialog/vbc/p/vbcc/gc2"]
+margin_top = 3.0
+margin_right = 303.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Platform"
+
+[node name="ob_platform" type="OptionButton" parent="Dialog/vbc/p/vbcc/gc2"]
+margin_left = 307.0
+margin_right = 610.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "windows"
+items = [ "windows", null, false, 0, null, "linux", null, false, 1, null, "osx", null, false, 2, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb_target" type="Label" parent="Dialog/vbc/p/vbcc/gc2"]
+margin_top = 27.0
+margin_right = 303.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+text = "Target"
+
+[node name="ob_target" type="OptionButton" parent="Dialog/vbc/p/vbcc/gc2"]
+margin_left = 307.0
+margin_top = 24.0
+margin_right = 610.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "release"
+items = [ "release", null, false, 0, null, "debug", null, false, 1, null ]
+selected = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lb_proc" type="Label" parent="Dialog/vbc/p/vbcc/gc2"]
+margin_top = 53.0
+margin_right = 303.0
+margin_bottom = 67.0
+size_flags_horizontal = 3
+text = "Processor Cores"
+
+[node name="sb_proc" type="SpinBox" parent="Dialog/vbc/p/vbcc/gc2"]
+margin_left = 307.0
+margin_top = 48.0
+margin_right = 610.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 16.0
+value = 1.0
+
+[node name="hs2" type="HSeparator" parent="Dialog/vbc/p/vbcc"]
+margin_top = 190.0
+margin_right = 610.0
+margin_bottom = 194.0
+
+[node name="bt_create_class" type="Button" parent="Dialog/vbc/p/vbcc"]
+margin_top = 204.0
+margin_right = 610.0
+margin_bottom = 224.0
+text = "Insert New Class"
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ClassList" type="ItemList" parent="Dialog/vbc/p/vbcc"]
+margin_top = 234.0
+margin_right = 610.0
+margin_bottom = 442.0
+size_flags_vertical = 3
+allow_reselect = true
+auto_height = true
+
+[node name="WindowDialog" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -202.0
+margin_top = -53.0
+margin_right = 203.0
+margin_bottom = 90.0
+popup_exclusive = true
+window_title = "Create a Class"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 26.0
+margin_top = 12.0
+margin_right = -26.0
+margin_bottom = -13.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowDialog/VBoxContainer"]
+margin_right = 353.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="WindowDialog/VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 83.0
+margin_bottom = 19.0
+text = "Class Name: "
+
+[node name="TextEdit" type="LineEdit" parent="WindowDialog/VBoxContainer/HBoxContainer"]
+margin_left = 87.0
+margin_right = 353.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="msg" type="Label" parent="WindowDialog/VBoxContainer"]
+margin_top = 28.0
+margin_right = 353.0
+margin_bottom = 94.0
+size_flags_vertical = 3
+align = 1
+valign = 1
+
+[node name="bt_done" type="Button" parent="WindowDialog/VBoxContainer"]
+margin_top = 98.0
+margin_right = 353.0
+margin_bottom = 118.0
+size_flags_vertical = 0
+text = "Done"
+
+[connection signal="meta_clicked" from="Dialog/vbc/rtl" to="." method="_on_RichTextLabel_meta_clicked"]
+[connection signal="pressed" from="Dialog/vbc/p/vbcc/gc/hbc/bt_createproj" to="." method="_on_bt_createproj_pressed"]
+[connection signal="pressed" from="Dialog/vbc/p/vbcc/bt_genbind" to="." method="_on_bt_genbind_pressed"]
+[connection signal="pressed" from="Dialog/vbc/p/vbcc/bt_compile" to="." method="_on_bt_compile_pressed"]
+[connection signal="pressed" from="Dialog/vbc/p/vbcc/bt_create_class" to="." method="_on_bt_create_class_pressed"]
+[connection signal="pressed" from="WindowDialog/VBoxContainer/bt_done" to="WindowDialog" method="_on_bt_done_pressed"]

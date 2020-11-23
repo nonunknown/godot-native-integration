@@ -1,0 +1,28 @@
+#pragma once
+
+#include <Godot.hpp>
+#include <Reference.hpp>
+#include <Node.hpp>
+
+#ifndef %DEF%
+#define %DEF%
+
+using namespace godot;
+
+class %CLASS_NAME% : public Reference {
+    GODOT_CLASS(%CLASS_NAME%, Reference);
+
+    public:
+        static void _register_methods();
+        void first_method();
+
+        %CLASS_NAME%();
+        ~%CLASS_NAME%();
+
+    
+    private:
+        int value = 10;
+
+};
+
+#endif

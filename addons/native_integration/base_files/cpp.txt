@@ -1,0 +1,15 @@
+#include "%CLASS_NAME%.hpp"
+
+void %CLASS_NAME%::_register_methods() {
+    register_method("first_method",&%CLASS_NAME%::first_method);
+}
+
+
+
+void %CLASS_NAME%::first_method() {
+    //LOL
+}
+
+%CLASS_NAME%::%CLASS_NAME%() {}
+
+%CLASS_NAME%::~%CLASS_NAME%() {}

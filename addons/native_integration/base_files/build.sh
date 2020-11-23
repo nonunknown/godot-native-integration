@@ -1,0 +1,1 @@
+scons -C "%s" bits=64 target_path="%s" src_path="%s" platform=linux target=%s -j%s
